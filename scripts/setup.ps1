@@ -18,13 +18,34 @@
 [CmdletBinding()]
 param(
     [switch]$Verify,
-    [switch]$SkipBackendInstall
+    [switch]$SkipBackendInstall,
+    [string]$CloneParent = "$HOME\dev",
+    [string]$RepoName = "troptions-ucc"
 )
 
 $ErrorActionPreference = 'Stop'
 
-Write-Host "=== troptions-ucc Windows Setup ===" -ForegroundColor Cyan
+Write-Host "=== troptions-ucc Windows Setup (helper pack) ===" -ForegroundColor Cyan
 Write-Host "Timestamp: $(Get-Date -Format o)" -ForegroundColor DarkGray
+
+# Optional clone support so this script can be the entry point for the full pack
+# (matches the documented "setup.ps1 clones" flow when invoked from a parent directory)
+$currentDir = (Get-Location).Path
+$expectedRepoRoot = Join-Path $CloneParent $RepoName
+
+if (-not (Test-Path (Join-Path $currentDir '.git'))) {
+    if ((Test-Path $expectedRepoRoot) -and (Test-Path (Join-Path $expectedRepoRoot '.git'))) {
+        Write-Host "Repo already exists at $expectedRepoRoot — cd'ing there."
+        Set-Location $expectedRepoRoot
+    } else {
+        Write-Host "No local git repo detected here. Cloning into $expectedRepoRoot ..."
+        if (-not (Test-Path $CloneParent)) { New-Item -ItemType Directory -Path $CloneParent -Force | Out-Null }
+        Push-Location $CloneParent
+        git clone https://github.com/FTHTrading/troptions-ucc.git
+        Pop-Location
+        Set-Location $expectedRepoRoot
+    }
+}
 
 # 1. Git context
 $branch = (git rev-parse --abbrev-ref HEAD).Trim()
@@ -101,11 +122,13 @@ if ($Verify) {
     Write-Host "  (Add more checks here: contract compile, hash service smoke test, etc.)"
 }
 
-# 5. Next steps
+# 5. Next steps (full pack)
 Write-Host ""
-Write-Host "=== Next Steps ===" -ForegroundColor Green
-Write-Host "After any scaffold or doc changes:"
+Write-Host "=== Next Steps (Windows helper pack) ===" -ForegroundColor Green
+Write-Host "If you have the scaffold tar.gz from a prior generation:"
+Write-Host "  .\scripts\extract-and-stage.ps1 -ArchivePath \"`$HOME\Downloads\troptions-ucc-repo.tar.gz\" -RepoDir \"`$HOME\dev\troptions-ucc\""
 Write-Host ""
+Write-Host "After any changes (or after extract-and-stage):"
 Write-Host "  git status"
 Write-Host "  git add ."
 Write-Host '  git commit -m "Initialize troptions-ucc collateral governance scaffold"'
@@ -114,6 +137,7 @@ Write-Host ""
 Write-Host "Or use the helper:"
 Write-Host "  .\scripts\push.ps1 -Message 'Your commit message here'"
 Write-Host ""
+Write-Host "See QUICKSTART.md for the exact sequence with the Troptions/NST 700M pledge facts."
 Write-Host "Backend dev server (after setup):"
 Write-Host "  cd backend; npm run dev"
 Write-Host ""

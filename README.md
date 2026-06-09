@@ -1,8 +1,16 @@
 # troptions-ucc
 
-**UCC Collateral Governance & Reserve Attestation Layer for TROPTIONS pledged assets.**
+**UCC Collateral Governance & Reserve Attestation Layer for the TROPTIONS / Newpoint Statutory Trust 700M pledge.**
 
-This repository provides the on-chain and off-chain tooling to anchor, attest, and govern collateral associated with the Newpoint Statutory Trust (NST) pledge arrangements (the "700M pledge").
+This repository provides the on-chain and off-chain tooling to anchor, attest, and govern the collateral under the Master Asset Pledge Security Agreement.
+
+Key facts from the executed documents:
+- **Secured Party**: Troptions (authorized to file UCC-1 financing statements).
+- **Pledgor**: Newpoint Statutory Trust (Delaware statutory trust, registration 6985669).
+- **Pledged Asset (Schedule A)**: USD cash, declared value 700,000,000.00, custody/location Scotia Bank Canada.
+- Date reference: Pledge Agreement ~2025-12-30.
+
+All on-chain hashes and attestations must trace to the canonical PDFs in controlled storage.
 
 ## Scope
 
@@ -17,8 +25,8 @@ This is **not** the TROPTIONS L1 chain itself. It is the collateral control and 
 
 All hashes and attestations in this system must be traceable to these files (stored in the operator's controlled OneDrive):
 
-- `11-Downloads/NST T pledge agreement 2025-12-30_150719.pdf`
-- `11-Downloads/NST CIS 2025-12-28_225418.pdf`
+- `11-Downloads/NST T pledge agreement 2025-12-30_150719.pdf` (Master Asset Pledge Security Agreement — Troptions secured party, NST pledgor, 700M USD cash at Scotia Bank Canada)
+- `11-Downloads/NST CIS 2025-12-28_225418.pdf` (Newpoint Statutory Trust CIS, DE reg. 6985669)
 
 Additional UCC-1, amendments, officer's certificates, and signatory packets will be added with new hashes as they are executed.
 
@@ -39,25 +47,30 @@ contracts/src/
 backend/
   src/server.ts                # PDF hashing + signature packet routing (prepare before on-chain)
 scripts/
-  setup.ps1                    # Windows one-shot post-clone (node deps + checks)
-  push.ps1                     # Reusable add/commit/push helper
+  setup.ps1                    # Clone/remote validation + optional backend npm install
+  extract-and-stage.ps1        # tar -xzf the scaffold archive + clean copy into repo (Windows tar)
+  push.ps1                     # git add / commit / push to origin/main helper
 ```
 
-## Quick Start (Windows / PowerShell)
+## Quick Start (Windows / PowerShell Helper Pack)
+
+The repo includes a full Windows-native pack so you can clone, (optionally) extract a scaffold archive, stage, and push without Bash translation:
+
+- `scripts/setup.ps1` — ensures clone/remote, validates, optionally installs backend Node deps.
+- `scripts/extract-and-stage.ps1` — unpacks `troptions-ucc-repo.tar.gz` (if you have the prior scaffold archive) using native `tar -xzf` and copies contents cleanly into the repo (skips .git).
+- `scripts/push.ps1` — stages, commits with your message, pushes to origin/main.
+
+**Recommended sequence** (run with ExecutionPolicy Bypass if needed):
 
 ```powershell
-cd $HOME\dev
-git clone https://github.com/FTHTrading/troptions-ucc.git
-cd .\troptions-ucc
-
-# One-time (or after any scaffold change)
-.\scripts\setup.ps1
-
-# Normal workflow after edits
-.\scripts\push.ps1 -Message "Add executed UCC-1 and first reserve attestation"
+# From a location that can see your Downloads (or adjust paths)
+powershell -ExecutionPolicy Bypass -File .\scripts\setup.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\extract-and-stage.ps1 -ArchivePath "$HOME\Downloads\troptions-ucc-repo.tar.gz" -RepoDir "$HOME\dev\troptions-ucc"
+cd $HOME\dev\troptions-ucc
+powershell -ExecutionPolicy Bypass -File .\scripts\push.ps1 -Message "Initialize troptions-ucc collateral governance scaffold (Troptions secured party / NST 700M USD cash pledge)"
 ```
 
-See `scripts/setup.ps1` for exactly what it does (git remote validation, backend `npm install`, node version check, next-step guidance).
+See the individual script headers and `QUICKSTART.md` for full details and the pledge-specific context.
 
 ## Contracts
 
