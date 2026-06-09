@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Build
+dist/
+backend/dist/
+build/
+*.tsbuildinfo
+
+# Foundry / Hardhat
+cache/
+out/
+artifacts/
+typechain/
+typechain-types/
+
+# Env & secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+secrets/
+*.keystore
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.log
+
+# Large binaries (source PDFs live in OneDrive)
+*.pdf
+*.docx
+*.xlsx
+legal/source/
+
+# Misc
+coverage/
+.nyc_output/
+*.tgz
+*.tar.gz
