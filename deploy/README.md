@@ -69,6 +69,31 @@ cp deploy/environments/apostle.env.example .env.apostle
 # 5. Follow deploy/SAFE-ADMIN-TRANSFER-CHECKLIST.md
 ```
 
+## Post-Push Status (as of this commit)
+
+Repo pushed to https://github.com/FTHTrading/troptions-ucc.git (main, upstream set).
+
+Full packs now live:
+- Windows helper pack (setup/extract-and-stage/push + QUICKSTART)
+- Apostle/core production pack (78d0227)
+- Polygon/Base mirror pack (3824dd3) — this commit
+
+**Immediate safe sequence (per topology and review-first principle):**
+
+1. Legal review of the pledge/UCC/perfection path using the corrected facts (Troptions secured party, NST pledgor DE reg. 6985669, 700M USD cash @ Scotia Bank Canada, Troptions UCC-1 authority).
+2. Security review of the Apostle/core + mirror deployment scripts and registry contracts.
+3. Dry-run `deploy-apostle.ps1` (and the mirror scripts) with env placeholders validated (use -DryRun).
+4. Real deployment **only after explicit sign-off**, then immediate Safe admin transfer, address recording in `registry/addresses.md`, and first document-hash registration + 700M reserve attestation as described in `docs/ATTESTATION_RUNBOOK.md`.
+5. For mirrors: deploy after core, run `deploy/CROSS_CHAIN_CONSISTENCY_CHECKLIST.md`.
+
+**Critical**: All Apostle actions require human approval + fresh preflight. This repo produces artifacts only. The pledge PDFs in controlled OneDrive storage are the legal source of truth; on-chain registries publish bounded representations.
+
+Preflight (sovereign-control-plane) was green before pack generation and push.
+
+Next logical after mirrors (when ready): XRPL loan integration docs/adapters, then public surfaces after full legal/security sign-off on the reserve structure.
+
+See also: root `QUICKSTART.md`, `docs/CHAIN_TOPOLOGY.md`, `docs/ATTESTATION_RUNBOOK.md`, `registry/addresses.md`.
+
 See `docs/ATTESTATION_RUNBOOK.md` for the exact steps to register the NST pledge documents and attest the reserve after deployment.
 
 ## Foundry Prerequisites (on the deployment machine)
