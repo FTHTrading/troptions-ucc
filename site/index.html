@@ -177,7 +177,9 @@
                 <a href="#multisig" class="nav-link font-medium">Multisig &amp; Governance</a>
                 <a href="#status" class="nav-link font-medium">Status &amp; DD</a>
                 <a href="#minting" class="nav-link font-medium">Minting &amp; Issuance</a>
+                <a href="#xrpl" class="nav-link font-medium">XRPL Lending</a>
                 <a href="#next" class="nav-link font-medium">What Else Is Needed</a>
+                <a href="#xrpl" class="nav-link font-medium">XRPL Lending</a>
             </div>
         </div>
     </div>
@@ -527,6 +529,44 @@
                 
                 <p class="text-sm text-amber-400">The 700M cash remains at Scotia Bank Canada. The pledge creates a perfected security interest. The on-chain registries provide the auditable, event-sourced proof for governance, due diligence, and internal capital decisions.</p>
             </div>
+        </div>
+    </div>
+
+    <!-- XRPL Lending -->
+    <div id="xrpl" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <h2 class="heading-font text-3xl tracking-tighter mb-2">XRPL Lending Integration</h2>
+        <p class="text-slate-400 max-w-2xl">Specialized credit/lending rail using XRPL native primitives (vaults, brokers, off-chain underwriting). The 700M NST/Troptions pledge attestations on the Apostle core provide verifiable evidence for XRPL loan products.</p>
+
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7">
+                <h3 class="font-semibold">Key Integration Points</h3>
+                <ul class="mt-4 space-y-2 text-sm text-slate-300">
+                    <li>• Reference Apostle attestation tx + docHash in XRPL memos/URIs/loan terms.</li>
+                    <li>• Use pledgeId "NST-T-2025-12-30-700M", amount "700000000.00" USD, Scotia custody note.</li>
+                    <li>• Troptions secured party + UCC-1 authority as part of the evidence package.</li>
+                    <li>• No movement of the underlying cash — the pledge perfects the interest off-ledger.</li>
+                </ul>
+                <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/xrpl/XRPL_INTEGRATION.md" download
+                   class="mt-6 inline-flex items-center gap-x-2 px-5 py-2.5 bg-white text-slate-950 font-semibold rounded-2xl hover:bg-slate-100 transition-all text-sm download-btn">
+                    <i class="fas fa-download mr-2"></i> Download XRPL Integration Pack
+                </a>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7">
+                <h3 class="font-semibold">Example Reference (Memo/URI Style)</h3>
+                <pre class="mt-3 text-xs bg-slate-950 p-3 rounded overflow-auto text-emerald-300">Pledge: NST-T-2025-12-30-700M
+DocHash: 0x&lt;from DocumentHashRegistry&gt;
+AttestTx: &lt;Apostle tx hash&gt;
+Amount: 700000000.00 USD
+Custody: Scotia Bank Canada
+SecuredParty: Troptions
+Evidence: &lt;Pages site or raw pledge PDF&gt;</pre>
+                <p class="mt-3 text-xs text-slate-400">Adapt to XRPL lending protocol objects (vaults/loans) per broker integration. See the full pack for xrpl.js-style example and review posture.</p>
+            </div>
+        </div>
+
+        <div class="mt-6 text-xs text-amber-400/80">
+            This is ready for legal, security, and operational review. XRPL flows remain subject to the core policy engine, UCC perfection, and the same evidence standards as the EVM rails. The site serves as the single review portal for the full topology (core + mirrors + XRPL).
         </div>
     </div>
 
