@@ -2,15 +2,32 @@
 
 **UCC Collateral Governance & Reserve Attestation Layer for the TROPTIONS / Newpoint Statutory Trust 700M pledge.**
 
-This repository provides the on-chain and off-chain tooling to anchor, attest, and govern the collateral under the Master Asset Pledge Security Agreement.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Pages / Cloudflare Pages](https://img.shields.io/badge/Site-Review_Portal-blue)](https://github.com/FTHTrading/troptions-ucc)
 
-Key facts from the executed documents:
-- **Secured Party**: Troptions (authorized to file UCC-1 financing statements).
+This repository provides the on-chain and off-chain tooling to anchor, attest, and govern the collateral under the Master Asset Pledge Security Agreement between Troptions (Secured Party) and Newpoint Statutory Trust (Pledgor, DE reg. 6985669).
+
+**Key facts from the executed documents (Schedule A):**
+- **Secured Party**: Troptions (authorized to file, amend, continue, and terminate UCC-1 financing statements).
 - **Pledgor**: Newpoint Statutory Trust (Delaware statutory trust, registration 6985669).
-- **Pledged Asset (Schedule A)**: USD cash, declared value 700,000,000.00, custody/location Scotia Bank Canada.
+- **Pledged Asset**: USD cash, declared value **700,000,000.00**, custody/location: Scotia Bank Canada.
 - Date reference: Pledge Agreement ~2025-12-30.
 
-All on-chain hashes and attestations must trace to the canonical PDFs in controlled storage.
+All on-chain hashes and attestations must trace to the canonical PDFs in controlled storage (OneDrive `11-Downloads/`).
+
+**Live Review Portal (static site)**: Deployed version of the full due-diligence surface (pledge facts, contract downloads, infrastructure packs for Apostle/Polygon/Base, XRPL integration, multisig docs, legal/UCC review package, status, and readiness checklist).
+
+**License**: MIT (see [LICENSE](LICENSE)).
+
+## Sovereign Control Plane Topology (Apostle Core First)
+
+- **Canonical**: UnyKorn / Avalanche L1 + Apostle (chain 7332) + x402 + MCP — policy, orchestration, and the authoritative 700M reserve attestations.
+- **EVM Mirrors**: Polygon (137) and Base (8453) for external visibility, Safe multisigs, and partner access (identical schema).
+- **XRPL**: Specialized lending/credit rail (vaults, brokers, off-chain underwriting). Use the attestations as evidence/PoF for XRPL loan products.
+
+The on-chain components (DocumentHashRegistry + TroptionsReserveRegistry) are **attestation/governance/evidence tools only**. The legal authority and perfected security interest live in the executed pledge agreement and UCC filings. Issuance/minting policy remains in the broader UnyKorn/Apostle sovereign control plane.
+
+**Review-First Posture**: Everything here is "ready for legal and security review." No production deployment or reliance until counsel sign-off on UCC perfection, control agreements, exact filing language, and the full reserve structure. Source PDFs in controlled storage are canonical.
 
 ## Scope
 

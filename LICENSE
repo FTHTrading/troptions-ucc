@@ -1,0 +1,38 @@
+MIT License
+
+Copyright (c) 2026 FTH Trading / Troptions
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+This repository contains tooling, documentation, and smart contract source for the
+TROPTIONS / Newpoint Statutory Trust (NST) 700M USD collateral governance and
+reserve attestation system (UCC-1 pledge structure).
+
+**Important**: The on-chain components (contracts, attestations) and this tooling
+are for governance, evidence, and audit purposes only. The legal authority and
+perfected security interest reside in the executed pledge agreement, CIS, and
+subsequent UCC filings (source documents in controlled operator storage). All
+deployments, attestations, and reliance are subject to legal review, security
+audit, and explicit human approvals per the sovereign control plane process.
+
+See README.md, the static review site (site/), and the pledge PDFs for full
+context, disclaimers, and the 700M USD cash pledge details (Troptions as secured
+party, NST as pledgor, Scotia Bank Canada custody).
