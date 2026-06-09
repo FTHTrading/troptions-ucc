@@ -8,12 +8,26 @@ This pack contains the minimal, production-oriented artifacts to deploy the two 
 
 ## Included Artifacts
 
+**Apostle / Core (Sovereign Control Plane) — First Priority**
 - `scripts/deploy-apostle.ps1` — PowerShell-native deployment script (uses Foundry/forge). Validates environment, builds, deploys the two contracts to Apostle, records addresses.
 - `deploy/signer-manifest.template.yaml` — Template for the multisig / Safe signers that will control the registries (owner + registrars + attestors). Aligns with `multisig/SAFE-PLAN.md`.
 - `deploy/SAFE-ADMIN-TRANSFER-CHECKLIST.md` — Step-by-step checklist for transferring ownership/admin from deployer EOA to a production Safe.
 - `deploy/environments/` — `.env.example` files for Apostle/core (primary), with placeholders for Polygon and Base adapters.
 - `registry/addresses.md` — Living contract address registry (start with Apostle/core; add mirrors later).
 - `docs/ATTESTATION_RUNBOOK.md` — How to hash a new legal packet (including the NST pledge PDFs), register the document hash, attest the 700M reserve, and verify events. Ties directly to the canonical OneDrive PDFs.
+
+**Polygon (137) + Base (8453) Mirror Pack — Next Wave (External EVM Rails)**
+- `scripts/deploy-polygon.ps1` and `scripts/deploy-base.ps1` — Near-identical scripts for mirrored deployments (same contracts, different network config and per-chain Safes).
+- Per-chain Safe manifest coordination notes (use the core template + dedicated Safes per chain).
+- `deploy/CROSS_CHAIN_CONSISTENCY_CHECKLIST.md` — Post-mirror verification for document hashes and 700M reserve metadata consistency across Apostle (canonical) and the EVM mirrors.
+- Environment examples already present in `deploy/environments/` (polygon.env.example, base.env.example).
+- Registry sections in `registry/addresses.md` for mirrors (placeholders until deployed).
+
+**Execution Order Reminder (from Topology)**
+1. Apostle/core first (this pack's core artifacts).
+2. Polygon + Base mirrors (the scripts + cross-chain checklist in this pack).
+3. XRPL loan adapters later.
+4. Public surfaces only after legal/security sign-off on the full reserve structure.
 
 ## Critical Warnings (Sovereign Control Plane + AGENTS.md)
 

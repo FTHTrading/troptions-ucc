@@ -29,10 +29,10 @@ All entries must include:
 
 | Contract                  | Address | Deploy Tx / Block | Owner (Polygon Safe) | Notes |
 |---------------------------|---------|-------------------|----------------------|-------|
-| DocumentHashRegistry     | TBD    | TBD              | Separate Polygon Safe | Mirrored reserve schema + doc hashes for external visibility |
-| TroptionsReserveRegistry | TBD    | TBD              | Separate Polygon Safe | Same 700M pledge metadata mirrored |
+| DocumentHashRegistry     | TBD    | TBD              | Dedicated Polygon Safe (coordinated with core manifest) | Mirror of Apostle registries. Same 700M NST pledge hashes + reserve metadata. Deploy via `scripts/deploy-polygon.ps1`. |
+| TroptionsReserveRegistry | TBD    | TBD              | Dedicated Polygon Safe | Same. Run `deploy/CROSS_CHAIN_CONSISTENCY_CHECKLIST.md` after mirroring the initial Apostle attestation. |
 
-**Deploy after Apostle/core is live and transferred to Safe.** Use `deploy/environments/polygon.env.example`.
+**Deploy only after Apostle/core is live, Safe-owned, and the first 700M pledge attestation is complete on the canonical rail.** Use `deploy/environments/polygon.env.example`.
 
 ---
 
@@ -40,10 +40,12 @@ All entries must include:
 
 | Contract                  | Address | Deploy Tx / Block | Owner (Base Safe) | Notes |
 |---------------------------|---------|-------------------|-------------------|-------|
-| DocumentHashRegistry     | TBD    | TBD              | Separate Base Safe | Mirrored for app integrations and broader EVM reach |
-| TroptionsReserveRegistry | TBD    | TBD              | Separate Base Safe | Same 700M pledge metadata mirrored |
+| DocumentHashRegistry     | TBD    | TBD              | Dedicated Base Safe (coordinated with core manifest) | Mirror of Apostle registries. Same 700M NST pledge hashes + reserve metadata. Deploy via `scripts/deploy-base.ps1`. |
+| TroptionsReserveRegistry | TBD    | TBD              | Dedicated Base Safe | Same. Run cross-chain consistency checklist after mirroring. |
 
-**Deploy after Apostle/core.** Use `deploy/environments/base.env.example`.
+**Deploy only after Apostle/core (and preferably after Polygon for sequencing).** Use `deploy/environments/base.env.example`.
+
+**Cross-chain note**: After any mirror deployment and attestation copy, execute the checks in `deploy/CROSS_CHAIN_CONSISTENCY_CHECKLIST.md` and record the mirror txs + confirmation that hashes/amounts/custody notes match the Apostle canonical values for the 700M USD cash pledge (Scotia Bank Canada, Troptions secured party, NST pledgor reg. 6985669).
 
 ---
 
