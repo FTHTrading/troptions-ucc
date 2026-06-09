@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troptions UCC Collateral Governance • 700M NST Pledge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: #0F172A;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .institutional {
+            background: linear-gradient(145deg, #0F172A 0%, #1E2937 100%);
+        }
+
+        .card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-link {
+            transition: color 0.1s ease;
+        }
+        
+        .nav-link:hover {
+            color: #64748b;
+        }
+
+        .stat {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            line-height: 1rem;
+        }
+
+        .download-btn {
+            transition: all 0.1s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .fact {
+            border-left: 3px solid #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+    <!-- Top Bar -->
+    <div class="bg-slate-900 border-b border-slate-800">
+        <div class="max-w-screen-xl mx-auto px-6 py-3 flex items-center justify-between text-sm">
+            <div class="flex items-center gap-x-3">
+                <div class="flex items-center gap-x-2">
+                    <div class="w-8 h-8 bg-sky-600 rounded flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white"></i>
+                    </div>
+                    <div>
+                        <span class="font-semibold tracking-tight">TROPTIONS</span>
+                        <span class="text-slate-500 text-xs ml-1">UCC GOVERNANCE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-x-4 text-xs">
+                <div class="px-3 py-1 bg-emerald-900/30 text-emerald-400 rounded-full flex items-center gap-x-1.5 text-[10px] font-medium">
+                    <i class="fas fa-check-circle"></i>
+                    <span>700M USD PLEDGE • SCOTIA CUSTODY</span>
+                </div>
+                <a href="https://github.com/FTHTrading/troptions-ucc" target="_blank" 
+                   class="flex items-center gap-x-1.5 hover:text-slate-400 transition-colors">
+                    <i class="fab fa-github"></i>
+                    <span class="hidden md:inline">GitHub</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="max-w-screen-xl mx-auto px-6 pt-16 pb-12">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-medium mb-6">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span>NEWPOINT STATUTORY TRUST • TROPTIONS SECURED PARTY</span>
+            </div>
+            
+            <h1 class="heading-font text-6xl tracking-tighter font-semibold leading-none">
+                700,000,000 USD<br>
+                Collateral Governance
+            </h1>
+            <p class="mt-6 text-xl text-slate-400 max-w-md">
+                On-chain attestation layer for the Master Asset Pledge Security Agreement. 
+                Immutable document hashes and reserve attestations tied to the executed pledge.
+            </p>
+            
+            <div class="flex items-center gap-x-4 mt-8">
+                <a href="#contracts" 
+                   class="inline-flex items-center justify-center px-6 py-3 bg-white text-slate-950 font-semibold rounded-xl hover:bg-slate-100 transition-all text-sm">
+                    <i class="fas fa-download mr-2"></i>
+                    Download Contracts &amp; Docs
+                </a>
+                <a href="#status" 
+                   class="inline-flex items-center justify-center px-6 py-3 border border-slate-700 hover:bg-slate-900 rounded-xl text-sm font-medium transition-all">
+                    View Status &amp; Readiness
+                </a>
+            </div>
+            
+            <div class="mt-6 flex items-center gap-x-8 text-xs text-slate-500">
+                <div>Secured Party: <span class="font-medium text-slate-300">Troptions</span></div>
+                <div>Pledgor: <span class="font-medium text-slate-300">Newpoint Statutory Trust (DE #6985669)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Facts -->
+    <div class="max-w-screen-xl mx-auto px-6 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+                <div class="text-emerald-400 text-xs font-medium tracking-widest">SCHEDULE A</div>
+                <div class="mt-2 text-3xl font-semibold stat">700,000,000.00</div>
+                <div class="text-sm text-slate-400">USD Cash • Declared Value</div>
+                <div class="mt-3 text-xs text-slate-500">Custody: Scotia Bank Canada</div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+                <div class="text-sky-400 text-xs font-medium tracking-widest">SECURED PARTY</div>
+                <div class="mt-2 text-2xl font-semibold">Troptions</div>
+                <div class="text-sm text-slate-400">Explicit UCC-1 filing authority</div>
+                <div class="mt-3 text-xs">First-priority continuing security interest (Art. 9 Florida)</div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+                <div class="text-amber-400 text-xs font-medium tracking-widest">PLEDGOR</div>
+                <div class="mt-2 text-2xl font-semibold">Newpoint Statutory Trust</div>
+                <div class="text-sm text-slate-400">Delaware Statutory Trust</div>
+                <div class="mt-1 text-xs font-mono text-slate-500">Reg. #6985669</div>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+                <div class="text-violet-400 text-xs font-medium tracking-widest">ON-CHAIN LAYER</div>
+                <div class="mt-2 text-lg font-semibold leading-tight">DocumentHashRegistry<br>+ TroptionsReserveRegistry</div>
+                <div class="mt-3 text-xs">Apostle (7332) canonical • Polygon/Base mirrors</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur border-b border-slate-800">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="flex items-center gap-x-8 text-sm py-3 overflow-x-auto">
+                <a href="#legal" class="nav-link font-medium">Legal &amp; UCC</a>
+                <a href="#contracts" class="nav-link font-medium">Smart Contracts</a>
+                <a href="#infrastructure" class="nav-link font-medium">Infrastructure</a>
+                <a href="#multisig" class="nav-link font-medium">Multisig &amp; Governance</a>
+                <a href="#status" class="nav-link font-medium">Status &amp; DD</a>
+                <a href="#minting" class="nav-link font-medium">Minting &amp; Issuance</a>
+                <a href="#next" class="nav-link font-medium">What Else Is Needed</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal & UCC Section -->
+    <div id="legal" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <span class="uppercase text-xs tracking-[2px] text-slate-500">Legal Authority Layer</span>
+                <h2 class="heading-font text-4xl tracking-tighter mt-1">Pledge &amp; UCC Filings</h2>
+            </div>
+            <div class="text-right text-xs text-slate-400">
+                Canonical sources in controlled storage<br>
+                <span class="font-mono">11-Downloads/NST T pledge agreement 2025-12-30_150719.pdf</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Key Facts -->
+            <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-8">
+                <h3 class="font-semibold text-lg mb-5">Master Asset Pledge Security Agreement</h3>
+                
+                <div class="space-y-4 text-sm">
+                    <div class="fact pl-4">
+                        <div class="font-medium">Secured Party</div>
+                        <div class="text-slate-300">Troptions (authorized to file, amend, continue, and terminate UCC-1 financing statements)</div>
+                    </div>
+                    <div class="fact pl-4">
+                        <div class="font-medium">Pledgor</div>
+                        <div class="text-slate-300">Newpoint Statutory Trust — Delaware statutory trust (Registration #6985669)</div>
+                    </div>
+                    <div class="fact pl-4">
+                        <div class="font-medium">Collateral (Schedule A)</div>
+                        <div class="text-slate-300">USD cash • Declared value USD 700,000,000.00 • Custody/location: Scotia Bank Canada</div>
+                    </div>
+                    <div class="fact pl-4">
+                        <div class="font-medium">Term &amp; Interest</div>
+                        <div class="text-slate-300">Five years. First-priority continuing security interest under Article 9 of the Uniform Commercial Code as adopted in Florida.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UCC Status -->
+            <div class="lg:col-span-7">
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 h-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold">UCC-1 Collateral Draft</h3>
+                        <div class="px-3 py-1 rounded-full bg-amber-900/30 text-amber-400 text-xs font-medium flex items-center gap-x-1">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>DRAFT — NOT FILED</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-slate-400 text-sm mb-6">
+                        Working draft supporting one or more UCC-1 financing statements perfecting the security interest in the pledged collateral. 
+                        Exact debtor names, secured party details, and Schedule A language must be taken verbatim from the executed Pledge.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/legal/UCC1-COLLATERAL-DRAFT.md" 
+                           download="UCC1-COLLATERAL-DRAFT.md"
+                           class="download-btn inline-flex items-center gap-x-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 rounded-2xl text-sm font-medium border border-slate-700">
+                            <i class="fas fa-download"></i>
+                            <span>Download UCC-1 Draft (MD)</span>
+                        </a>
+                        <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/legal/UCC1-COLLATERAL-DRAFT.md" target="_blank"
+                           class="inline-flex items-center gap-x-2 px-5 py-2.5 border border-slate-700 hover:bg-slate-800 rounded-2xl text-sm font-medium">
+                            <span>View on GitHub</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-6 text-xs text-amber-400/80 border-l-2 border-amber-900 pl-3">
+                        <strong>Important:</strong> This draft does not complete legal closing or perfection. Counsel must validate debtor naming, authority, perfection steps (including any control agreements), and filing jurisdictions before submission.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Contracts -->
+    <div id="contracts" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <div class="mb-8">
+            <span class="uppercase text-xs tracking-[2px] text-slate-500">On-Chain Attestation Layer</span>
+            <h2 class="heading-font text-4xl tracking-tighter mt-1">Smart Contracts</h2>
+            <p class="text-slate-400 mt-2 max-w-md">Minimal, event-sourced, forensic-grade registries for document hashes and reserve attestations. Designed for the 700M pledge collateral.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Document Hash Registry -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 card">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="font-mono text-xs text-sky-400">DOCUMENTHASHREGISTRY.SOL</div>
+                        <h3 class="font-semibold text-2xl mt-1">DocumentHashRegistry</h3>
+                    </div>
+                    <div class="px-3 py-1 text-[10px] bg-sky-900/30 text-sky-400 rounded font-medium self-start">APPEND-ONLY</div>
+                </div>
+                
+                <div class="mt-4 text-sm text-slate-400">
+                    Versioned registration of cryptographic hashes (keccak256 recommended) of legal instruments, UCC filings, and signatory packets. 
+                    Prevents collisions and provides full reverse-lookup.
+                </div>
+                
+                <div class="mt-5 grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <div class="text-slate-500">Key Features</div>
+                        <ul class="mt-2 space-y-1 text-slate-400">
+                            <li>• Owner + Registrar roles</li>
+                            <li>• Versioned records</li>
+                            <li>• Content hash collision protection</li>
+                            <li>• Rich indexed events</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <div class="text-slate-500">Use Case</div>
+                        <div class="mt-2 text-slate-300">
+                            Register hashes of the executed NST Pledge Agreement, CIS, UCC-1s, and any amendments.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex gap-2">
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/contracts/src/DocumentHashRegistry.sol" 
+                       download="DocumentHashRegistry.sol"
+                       class="flex-1 text-center download-btn px-4 py-2.5 text-xs font-medium bg-white text-slate-950 rounded-2xl flex items-center justify-center gap-x-2">
+                        <i class="fas fa-download"></i> <span>DOWNLOAD .SOL</span>
+                    </a>
+                    <a href="https://github.com/FTHTrading/troptions-ucc/blob/main/contracts/src/DocumentHashRegistry.sol" target="_blank"
+                       class="flex-1 text-center px-4 py-2.5 text-xs font-medium border border-slate-700 hover:bg-slate-800 rounded-2xl">View Source</a>
+                </div>
+            </div>
+
+            <!-- Reserve Registry -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 card">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="font-mono text-xs text-emerald-400">TROPTIONSRESERVEREGISTRY.SOL</div>
+                        <h3 class="font-semibold text-2xl mt-1">TroptionsReserveRegistry</h3>
+                    </div>
+                    <div class="px-3 py-1 text-[10px] bg-emerald-900/30 text-emerald-400 rounded font-medium self-start">FORENSIC</div>
+                </div>
+                
+                <div class="mt-4 text-sm text-slate-400">
+                    Attestation of reserve/collateral balances linked to specific pledge instruments. 
+                    Amounts stored as strings for exact precision. Full append-only history.
+                </div>
+                
+                <div class="mt-5 grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <div class="text-slate-500">Key Features</div>
+                        <ul class="mt-2 space-y-1 text-slate-400">
+                            <li>• String amounts (exact decimals)</li>
+                            <li>• pledgeId + collateralId keys</li>
+                            <li>• Complete history array</li>
+                            <li>• Supporting doc hash linkage</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <div class="text-slate-500">First Use Case</div>
+                        <div class="mt-2 text-slate-300">
+                            Attest "700000000.00" USD cash for pledgeId <span class="font-mono">"NST-T-2025-12-30-700M"</span> with Scotia custody note.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex gap-2">
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/contracts/src/TroptionsReserveRegistry.sol" 
+                       download="TroptionsReserveRegistry.sol"
+                       class="flex-1 text-center download-btn px-4 py-2.5 text-xs font-medium bg-white text-slate-950 rounded-2xl flex items-center justify-center gap-x-2">
+                        <i class="fas fa-download"></i> <span>DOWNLOAD .SOL</span>
+                    </a>
+                    <a href="https://github.com/FTHTrading/troptions-ucc/blob/main/contracts/src/TroptionsReserveRegistry.sol" target="_blank"
+                       class="flex-1 text-center px-4 py-2.5 text-xs font-medium border border-slate-700 hover:bg-slate-800 rounded-2xl">View Source</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 text-xs text-slate-500 flex items-center gap-x-2">
+            <i class="fas fa-info-circle"></i>
+            <span>Contracts are intentionally minimal and auditable. No external dependencies. Events are the forensic source of truth. Review the full source before any deployment.</span>
+        </div>
+    </div>
+
+    <!-- Infrastructure -->
+    <div id="infrastructure" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <h2 class="heading-font text-3xl tracking-tighter mb-2">Full Infrastructure &amp; Deployment Packs</h2>
+        <p class="text-slate-400 max-w-lg mb-8">Apostle (sovereign control plane) first. Polygon and Base as mirrors. All PowerShell-native where applicable.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="border border-slate-800 bg-slate-900 rounded-3xl p-6">
+                <div class="uppercase text-xs text-amber-400 tracking-widest font-medium">SOVEREIGN CORE</div>
+                <div class="font-semibold mt-1 text-xl">Apostle / Chain 7332</div>
+                <div class="text-sm mt-4 text-slate-400">Primary deployment target. Canonical reserve attestations and document hashes live here.</div>
+                
+                <div class="mt-6 space-y-2 text-sm">
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/scripts/deploy-apostle.ps1" download class="block px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-2xl text-xs flex items-center gap-x-2">
+                        <i class="fas fa-download w-4"></i> <span>deploy-apostle.ps1</span>
+                    </a>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/deploy/environments/apostle.env.example" download class="block px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-2xl text-xs flex items-center gap-x-2">
+                        <i class="fas fa-download w-4"></i> <span>apostle.env.example</span>
+                    </a>
+                </div>
+                <div class="mt-4 text-[10px] text-amber-400">Requires explicit human approval + preflight</div>
+            </div>
+
+            <div class="border border-slate-800 bg-slate-900 rounded-3xl p-6">
+                <div class="uppercase text-xs text-sky-400 tracking-widest font-medium">EXTERNAL EVM MIRRORS</div>
+                <div class="font-semibold mt-1 text-xl">Polygon (137) + Base (8453)</div>
+                <div class="text-sm mt-4 text-slate-400">Mirrored contracts for external visibility, partner Safes, wallet access, and ecosystem reach. Same schema.</div>
+                
+                <div class="mt-6 space-y-2 text-sm">
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/scripts/deploy-polygon.ps1" download class="block px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-2xl text-xs flex items-center gap-x-2">
+                        <i class="fas fa-download w-4"></i> <span>deploy-polygon.ps1</span>
+                    </a>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/scripts/deploy-base.ps1" download class="block px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-2xl text-xs flex items-center gap-x-2">
+                        <i class="fas fa-download w-4"></i> <span>deploy-base.ps1</span>
+                    </a>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/deploy/CROSS_CHAIN_CONSISTENCY_CHECKLIST.md" download class="block px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-2xl text-xs flex items-center gap-x-2">
+                        <i class="fas fa-download w-4"></i> <span>Cross-Chain Consistency Checklist</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border border-slate-800 bg-slate-900 rounded-3xl p-6">
+                <div class="uppercase text-xs text-violet-400 tracking-widest font-medium">SUPPORTING</div>
+                <div class="font-semibold mt-1 text-xl">Windows Packs &amp; Runbooks</div>
+                
+                <div class="mt-5 text-sm space-y-2.5">
+                    <div class="flex gap-2">
+                        <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/scripts/setup.ps1" download class="text-xs px-3 py-1.5 bg-slate-800 rounded-xl flex-1 text-center">setup.ps1</a>
+                        <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/scripts/extract-and-stage.ps1" download class="text-xs px-3 py-1.5 bg-slate-800 rounded-xl flex-1 text-center">extract-and-stage.ps1</a>
+                    </div>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/QUICKSTART.md" download class="block text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-center">QUICKSTART.md</a>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/docs/ATTESTATION_RUNBOOK.md" download class="block text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-center">ATTESTATION_RUNBOOK.md</a>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/docs/CHAIN_TOPOLOGY.md" download class="block text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-center">CHAIN_TOPOLOGY.md</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multisig -->
+    <div id="multisig" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <h2 class="heading-font text-3xl tracking-tighter mb-2">Multisig &amp; Governance</h2>
+        <p class="max-w-md text-slate-400">Production control of the registries. Owner + Registrar + Attestor roles. High thresholds for material actions.</p>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7">
+                <h4 class="font-medium">SAFE-PLAN.md</h4>
+                <p class="text-sm text-slate-400 mt-2">Key management, signer composition, emergency procedures, and mapping of roles to the contracts.</p>
+                <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/multisig/SAFE-PLAN.md" download 
+                   class="mt-5 inline-block px-5 py-2 bg-slate-800 text-xs rounded-2xl font-medium download-btn">Download SAFE-PLAN.md</a>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7">
+                <h4 class="font-medium">Signer Manifest Template</h4>
+                <p class="text-sm text-slate-400 mt-2">3-of-5 (or adjustable) structure with roles for the 700M pledge attestations. Includes emergency rotation procedures.</p>
+                <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/deploy/signer-manifest.template.yaml" download 
+                   class="mt-5 inline-block px-5 py-2 bg-slate-800 text-xs rounded-2xl font-medium download-btn">Download signer-manifest.template.yaml</a>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 md:col-span-2">
+                <div class="flex items-center gap-x-4">
+                    <div class="flex-1">
+                        <h4 class="font-medium">SAFE Admin Transfer Checklist</h4>
+                        <p class="text-sm text-slate-400">Step-by-step process to move contract ownership from deployer EOA to production Safe immediately after deployment.</p>
+                    </div>
+                    <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/deploy/SAFE-ADMIN-TRANSFER-CHECKLIST.md" download 
+                       class="px-5 py-2 bg-white text-slate-950 rounded-2xl text-xs font-semibold whitespace-nowrap download-btn">Download Checklist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status & DD -->
+    <div id="status" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <h2 class="heading-font text-3xl tracking-tighter">Status, Due Diligence &amp; Verification</h2>
+
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8">
+                    <h3 class="font-semibold mb-4">Current State (as of latest commit)</h3>
+                    
+                    <div class="space-y-5 text-sm">
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-0.5 flex-shrink-0"><i class="fas fa-check text-emerald-400"></i></div>
+                            <div>
+                                <div class="font-medium">Smart Contracts</div>
+                                <div class="text-slate-400">Source reviewed and production-oriented. Minimal attack surface. String amounts for precision. Rich events for forensics. Ready for counsel/security review and deployment (after approvals).</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-0.5 flex-shrink-0"><i class="fas fa-check text-emerald-400"></i></div>
+                            <div>
+                                <div class="font-medium">UCC-1 Draft</div>
+                                <div class="text-slate-400">Updated with correct parties and Schedule A facts. Includes strong counsel validation disclaimer. Ready for legal team to finalize exact debtor/secured party language and file.</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-0.5 flex-shrink-0"><i class="fas fa-check text-emerald-400"></i></div>
+                            <div>
+                                <div class="font-medium">Infrastructure</div>
+                                <div class="text-slate-400">Full Apostle/core + Polygon/Base mirror packs (PowerShell + Foundry). Deployment scripts, env templates, Safe checklists, and cross-chain consistency tools all present.</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-0.5 flex-shrink-0"><i class="fas fa-exclamation-triangle text-amber-400"></i></div>
+                            <div>
+                                <div class="font-medium">UCC Filings</div>
+                                <div class="text-slate-400"><strong>Not yet submitted.</strong> Draft stage. Requires counsel to validate names, authority, perfection mechanics (control agreements, etc.), and jurisdictions before filing.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7 h-full">
+                    <div class="text-xs uppercase tracking-widest text-amber-400 mb-2">DUE DILIGENCE NOTES</div>
+                    <ul class="text-sm space-y-3 text-slate-300">
+                        <li>• 700M facts sourced directly from executed PDFs (Schedule A + CIS)</li>
+                        <li>• Contracts designed for forensic reconstruction (events + full history)</li>
+                        <li>• No rehypothecation or concentration risk modeled in these contracts — handled off-chain / in policy engine</li>
+                        <li>• On-chain layer publishes attestations; does not create the legal security interest</li>
+                    </ul>
+                    <div class="mt-6 text-[10px] text-slate-500">All major conclusions map to primary evidence (pledge agreement, CIS, contract source).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minting & Issuance -->
+    <div id="minting" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <div class="max-w-2xl">
+            <h2 class="heading-font text-3xl tracking-tighter">Handling "Our End" Minting &amp; Issuance</h2>
+            
+            <div class="mt-6 prose prose-invert text-slate-300 text-[15px]">
+                <p>The contracts in this repository (<strong>troptions-ucc</strong>) are <strong>attestation and governance tools only</strong>. They do not contain mint, burn, or issuance logic.</p>
+                
+                <div class="my-5 p-5 bg-slate-900 border border-slate-800 rounded-2xl text-sm">
+                    <div class="font-medium text-slate-100 mb-2">Correct Flow</div>
+                    <ol class="list-decimal list-inside space-y-1 text-slate-400">
+                        <li>Legal pledge executed and perfected (UCC-1 filing by Troptions as authorized secured party).</li>
+                        <li>Document hashes registered on-chain via DocumentHashRegistry (Apostle first).</li>
+                        <li>Reserve status attested via TroptionsReserveRegistry (700M USD cash + Scotia custody reference).</li>
+                        <li>The on-chain attested reserve status becomes an input to Troptions capital/issuance policy engines on the UnyKorn/Apostle sovereign control plane.</li>
+                        <li>Any actual token issuance or "minting" (e.g. related to TROPTIONS capital activities, USDF, or other instruments) is handled in the broader Troptions issuance systems, gated by the attested collateral position.</li>
+                    </ol>
+                </div>
+                
+                <p class="text-sm text-amber-400">The 700M cash remains at Scotia Bank Canada. The pledge creates a perfected security interest. The on-chain registries provide the auditable, event-sourced proof for governance, due diligence, and internal capital decisions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- What Else Is Needed -->
+    <div id="next" class="max-w-screen-xl mx-auto px-6 py-16">
+        <h2 class="heading-font text-3xl tracking-tighter mb-2">What Else Is Needed to Get This Done and On the Books</h2>
+        <p class="text-slate-400">Prioritized checklist. The legal instruments and on-chain attestations are the foundation.</p>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm">
+            <div>
+                <div class="font-semibold text-emerald-400 mb-3">IMMEDIATE (Pre-Deployment)</div>
+                <ul class="space-y-2 text-slate-300">
+                    <li class="flex gap-3"><span class="font-mono text-emerald-500 mt-0.5">1.</span> Counsel finalizes exact debtor/secured party names, filing jurisdictions, and any control agreements from the executed Pledge.</li>
+                    <li class="flex gap-3"><span class="font-mono text-emerald-500 mt-0.5">2.</span> Security review of the two Solidity contracts and deployment scripts.</li>
+                    <li class="flex gap-3"><span class="font-mono text-emerald-500 mt-0.5">3.</span> Create production Safe(s) on Apostle (and later on Polygon/Base) per the signer manifest.</li>
+                    <li class="flex gap-3"><span class="font-mono text-emerald-500 mt-0.5">4.</span> Obtain explicit human approval + run preflight for Apostle actions.</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="font-semibold text-sky-400 mb-3">DEPLOYMENT &amp; ATTESTATION</div>
+                <ul class="space-y-2 text-slate-300">
+                    <li class="flex gap-3"><span class="font-mono text-sky-500 mt-0.5">5.</span> Dry-run then execute Apostle deployment via <code>deploy-apostle.ps1</code>.</li>
+                    <li class="flex gap-3"><span class="font-mono text-sky-500 mt-0.5">6.</span> Immediate Safe admin transfer (use the checklist).</li>
+                    <li class="flex gap-3"><span class="font-mono text-sky-500 mt-0.5">7.</span> Register document hashes of the executed pledge PDFs.</li>
+                    <li class="flex gap-3"><span class="font-mono text-sky-500 mt-0.5">8.</span> Attest the 700M USD cash reserve on Apostle (first canonical record).</li>
+                    <li class="flex gap-3"><span class="font-mono text-sky-500 mt-0.5">9.</span> Deploy mirrors to Polygon + Base + run cross-chain consistency checklist.</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="font-semibold text-violet-400 mb-3">LEGAL &amp; OPERATIONAL</div>
+                <ul class="space-y-2 text-slate-300">
+                    <li class="flex gap-3"><span class="font-mono text-violet-500 mt-0.5">10.</span> File UCC-1 financing statement(s) (Troptions as filer).</li>
+                    <li class="flex gap-3"><span class="font-mono text-violet-500 mt-0.5">11.</span> Record all tx hashes, Safe executions, and evidence in the operator vault.</li>
+                    <li class="flex gap-3"><span class="font-mono text-violet-500 mt-0.5">12.</span> Register <code>troptions-ucc</code> system in sovereign-control-plane registry (human sign-off required).</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="font-semibold text-rose-400 mb-3">GOVERNANCE &amp; ONGOING</div>
+                <ul class="space-y-2 text-slate-300">
+                    <li class="flex gap-3"><span class="font-mono text-rose-500 mt-0.5">13.</span> Establish cadence for re-attestation / valuation updates.</li>
+                    <li class="flex gap-3"><span class="font-mono text-rose-500 mt-0.5">14.</span> Wire attested reserve status into Troptions capital issuance policy (on the UnyKorn/Apostle control plane).</li>
+                    <li class="flex gap-3"><span class="font-mono text-rose-500 mt-0.5">15.</span> Add XRPL loan adapter specs when lending products reference this pledge as collateral/PoF.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-10 p-6 bg-slate-900 border border-slate-800 rounded-3xl text-xs text-slate-400">
+            <strong class="text-slate-300">Note on "Minting":</strong> There is no mint function in these contracts. The 700M cash pledge (once perfected) provides the collateral backing that can support Troptions capital formation and issuance activities on the sovereign control plane. The on-chain reserve attestation is the auditable proof. Actual issuance logic lives in the broader Troptions / UnyKorn capital systems.
+        </div>
+    </div>
+
+    <!-- Footer / Disclaimers -->
+    <div class="border-t border-slate-800 bg-slate-950">
+        <div class="max-w-screen-xl mx-auto px-6 py-12 text-xs text-slate-500">
+            <div class="max-w-3xl">
+                <strong class="text-slate-400">IMPORTANT DISCLAIMERS</strong>
+                <p class="mt-3 leading-relaxed">
+                    This repository and site contain working drafts, deployment tooling, and on-chain attestation contracts. They do <strong>not</strong> constitute legal advice, do not complete perfection of any security interest, and do not authorize any issuance or minting. 
+                    Before filing any UCC-1, deploying contracts, or relying on attestations for capital decisions, obtain review and sign-off from qualified counsel, perform security audits, and secure all required human approvals per the sovereign-control-plane process.
+                </p>
+                <p class="mt-3">
+                    Canonical legal documents live in controlled operator storage (OneDrive). All on-chain records must be reproducible from the exact bytes of those documents.
+                </p>
+                <p class="mt-4 text-[10px]">Troptions UCC Collateral Governance • Sovereign control plane first • External EVM mirrors for reach only</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple smooth scroll for nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Tailwind script for any dynamic classes if needed
+        console.log('%c[Troptions UCC] Static institutional site ready for Cloudflare Pages or GitHub Pages deployment.', 'color:#64748b');
+    </script>
+</body>
+</html>
