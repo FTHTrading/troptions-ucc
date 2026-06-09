@@ -187,10 +187,22 @@ The site files are committed and pushed in the repo under `site/`. It is **not p
 7. Deploy. Live URL e.g. https://troptions-ucc.pages.dev (custom domain optional).
 
 **Reliable fallback: GitHub Pages via Actions (from `site/` subdir):**
-- The workflow `.github/workflows/deploy-site.yml` is included. It builds from the `site` directory and deploys to GitHub Pages.
-- In repo Settings → Pages, set source to "GitHub Actions".
-- Push to `main` to trigger (or manual dispatch).
+- The workflow `.github/workflows/deploy-site.yml` is included. It deploys the **contents of the `site/` directory** as the root of the published site (so `site/index.html` becomes the root `index.html`).
+- **Critical fix for 404s**: In repo **Settings → Pages**, set **Source** to **"GitHub Actions"** (NOT "Deploy from a branch"). Branch-based publishing does not support arbitrary subfolders like `site/`.
+- Push to `main` (or use "Run workflow" in Actions tab) to trigger.
 - Live URL: https://fthtrading.github.io/troptions-ucc/ (project page).
+
+**Troubleshooting 404 "File not found" (the error you saw):**
+- This happens when Pages is set to branch source (it looks for index.html in the branch root or /docs, not site/) or the Actions deploy hasn't succeeded yet.
+- Steps to fix:
+  1. Make sure the workflow file is on `main` (it is in the latest commits).
+  2. Go to Settings → Pages.
+  3. Change Source to **GitHub Actions**.
+  4. Save.
+  5. Go to Actions tab → the "Deploy Static Site to GitHub Pages" workflow → Run it (or push any change to main).
+  6. Wait for the green "deploy" job.
+  7. Visit https://fthtrading.github.io/troptions-ucc/ (add /index.html if needed temporarily).
+- Also ensure you have a `.nojekyll` file in `site/` (we added one to prevent Jekyll processing issues).
 
 Once live (CF or GH Pages):
 - Set the live URL in GitHub repo **About** → Website field.
