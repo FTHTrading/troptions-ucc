@@ -1,0 +1,87 @@
+# troptions-ucc — Apostle / Core Production Deployment Pack
+
+**Priority**: Apostle (UnyKorn sovereign control plane / chain 7332) **first**, per the Multi-Chain Topology.
+
+This pack contains the minimal, production-oriented artifacts to deploy the two core registries (`DocumentHashRegistry.sol` and `TroptionsReserveRegistry.sol`) on the Apostle/Un yKorn control plane, configure governance, and prepare the first attestation for the **700,000,000.00 USD cash pledge** (Newpoint Statutory Trust as pledgor / Delaware statutory trust reg. 6985669; Troptions as secured party; custody Scotia Bank Canada; Schedule A per the executed Master Asset Pledge Security Agreement).
+
+**External EVM rails (Polygon 137 / Base 8453) are mirrors only.** Do not treat them as the canonical reserve authority.
+
+## Included Artifacts
+
+- `scripts/deploy-apostle.ps1` — PowerShell-native deployment script (uses Foundry/forge). Validates environment, builds, deploys the two contracts to Apostle, records addresses.
+- `deploy/signer-manifest.template.yaml` — Template for the multisig / Safe signers that will control the registries (owner + registrars + attestors). Aligns with `multisig/SAFE-PLAN.md`.
+- `deploy/SAFE-ADMIN-TRANSFER-CHECKLIST.md` — Step-by-step checklist for transferring ownership/admin from deployer EOA to a production Safe.
+- `deploy/environments/` — `.env.example` files for Apostle/core (primary), with placeholders for Polygon and Base adapters.
+- `registry/addresses.md` — Living contract address registry (start with Apostle/core; add mirrors later).
+- `docs/ATTESTATION_RUNBOOK.md` — How to hash a new legal packet (including the NST pledge PDFs), register the document hash, attest the 700M reserve, and verify events. Ties directly to the canonical OneDrive PDFs.
+
+## Critical Warnings (Sovereign Control Plane + AGENTS.md)
+
+- **Apostle Chain (chain_id 7332) is critical risk.** Human approval is required for contract deployment, ownership transfer, attestor set changes, and any initial high-value attestations.
+- **Never execute transactions on Apostle without explicit sign-off.**
+- This pack produces **artifacts and scripts only**. It does **not** run deployments or sign transactions.
+- Legal perfection (UCC-1 filing authority, control agreements, exact debtor/pledgor names) and security review of the contracts must be complete before any production use or public issuance.
+- The 700M USD cash pledge (Scotia Bank Canada custody) is the first reserve object. All attestations must be reproducible from the exact bytes of the source PDFs in controlled storage.
+- Do not commit real private keys, RPC secrets, or signer seeds. Use the `.env.example` pattern + sovereign-control-plane secrets loading where applicable.
+
+## Recommended Execution Order (from Topology)
+
+1. Push this repo (if not already done).
+2. Complete legal/security review of the pledge packet and contracts.
+3. Run preflight for the relevant scope (sovereign-control-plane or troptions) and obtain human approval for Apostle actions.
+4. Use `scripts/deploy-apostle.ps1` (or manual forge) on a controlled machine with the deployer key.
+5. Record addresses in `registry/addresses.md`.
+6. Execute the Safe admin transfer checklist.
+7. Perform the first document hash registration + 700M reserve attestation (using hashes computed from the backend hasher against the real PDFs).
+8. Later: mirror to Polygon + Base using the same schema + separate Safes.
+9. Only after the above, open public attestation/issuance surfaces.
+
+## Quick Usage (Apostle)
+
+```powershell
+# From repo root (after review + approval)
+cd $HOME\dev\troptions-ucc
+
+# 1. Copy and fill the environment (never commit the real file)
+cp deploy/environments/apostle.env.example .env.apostle
+
+# 2. (Optional but recommended) source sovereign secrets pattern if you have one
+# . "$HOME\sovereign-control-plane\scripts\load-genesis402-seeds.ps1" or equivalent
+
+# 3. Run the deployment script
+.\scripts\deploy-apostle.ps1 -EnvFile .env.apostle -Verify
+
+# 4. Manually or via the script output: update registry/addresses.md
+# 5. Follow deploy/SAFE-ADMIN-TRANSFER-CHECKLIST.md
+```
+
+See `docs/ATTESTATION_RUNBOOK.md` for the exact steps to register the NST pledge documents and attest the reserve after deployment.
+
+## Foundry Prerequisites (on the deployment machine)
+
+The script assumes Foundry (`forge`) is installed and in PATH (user machines in this environment have confirmed `forge --version`).
+
+```powershell
+# One-time
+curl -L https://foundry.paradigm.xyz | bash
+# then follow on-screen instructions and `foundryup`
+```
+
+The contracts have no constructor arguments and are intentionally minimal (no external deps) for auditability on the sovereign rail.
+
+## Next Packs (after this one)
+
+- Polygon + Base mirror deployment configs + Safe manifests (identical reserve + document schema, chain-specific RPC/addresses).
+- XRPL loan adapter specs and integration docs.
+- Public portal / issuance dashboard specs (only after legal + security sign-off on the reserve structure).
+
+## References
+
+- Canonical pledge facts and source PDFs: see root `README.md`, `QUICKSTART.md`, and `11-Downloads/NST T pledge agreement...` + `NST CIS...`.
+- Topology: `docs/CHAIN_TOPOLOGY.md` (and the authoritative Google Drive version referenced in the full map).
+- Legal scaffolding: `legal/`, `compliance/`, `multisig/`.
+- On-chain contracts: `contracts/src/`.
+
+This pack makes the 700M NST pledge the first concrete reserve object on the sovereign control plane.
+
+**Push the repo, obtain approvals, then run the Apostle deployment.** All downstream mirrors and public surfaces follow.

@@ -1,0 +1,98 @@
+# Troptions UCC Registries — Signer Manifest Template
+# Use this as the source of truth for the multisig / Safe that will own and control
+# DocumentHashRegistry and TroptionsReserveRegistry on Apostle (and later mirrors).
+#
+# Aligns with multisig/SAFE-PLAN.md and the 700M NST pledge (Troptions secured party).
+# Thresholds should be high for issuance/reserve changes and admin actions.
+#
+# DO NOT commit real addresses or private material. This is a template only.
+# After filling, store the completed version in the operator vault + reference here.
+
+version: 1
+pledge_reference: "NST 700M USD cash pledge — Newpoint Statutory Trust (DE reg 6985669) to Troptions (secured party), Scotia Bank Canada custody, Schedule A 2025-12-30"
+purpose: "Control of on-chain reserve attestation and legal document hash registries for the collateral governance layer"
+
+# Primary Safe / multisig that will be set as owner of both contracts
+primary_safe:
+  chain: "apostle"          # or "unykorn-l1" / chain 7332
+  address: "0x..."          # <--- FILL: the production Safe address on Apostle
+  threshold: "3-of-5"
+  network: "Apostle / UnyKorn sovereign control plane"
+
+signers:
+  - id: "operator-1"
+    name: "Kevan (FTH / Troptions operator)"
+    role: "Primary operator / capital control"
+    address: "0x..."        # EOA or hardware
+    type: "EOA or Ledger"
+    notes: "Must be present for high-value reserve attestations and admin changes"
+
+  - id: "operator-2"
+    name: "Designated FTH principal / family office"
+    role: "Secondary operator"
+    address: "0x..."
+    type: "EOA or Ledger"
+
+  - id: "counsel-1"
+    name: "Independent counsel or trustee representative (NST-related matters)"
+    role: "Independent / compliance seat"
+    address: "0x..."
+    type: "EOA or institution"
+    notes: "Recommended for pledge-related governance to provide independent attestation review"
+
+  - id: "infra-1"
+    name: "Technical / infra lead"
+    role: "Operational / emergency"
+    address: "0x..."
+    type: "EOA or hardware"
+    notes: "Lower weight for routine document registration; higher for emergency pause/rotation"
+
+  - id: "rotating-1"
+    name: "Rotating or additional independent seat"
+    role: "Governance diversity"
+    address: "0x..."
+    type: "EOA"
+    notes: "Can be cycled; update manifest on rotation"
+
+# Roles on the contracts (after deployment, call addRegistrar / addAttestor from the Safe)
+roles:
+  owner:
+    description: "Full control — can add/remove registrars and attestors, transfer ownership"
+    assigned_to: "primary_safe"
+    threshold_for_action: "3-of-5 (Safe execution)"
+
+  registrars:
+    description: "Can call registerDocument on DocumentHashRegistry (day-to-day legal packet hashes)"
+    assigned_to:
+      - "primary_safe"
+      - "operator-1"   # optional direct EOA for speed on routine document registration
+      - "counsel-1"
+    threshold_for_add_remove: "owner (Safe)"
+
+  attestors:
+    description: "Can call attestReserve on TroptionsReserveRegistry (the 700M pledge and future collateral)"
+    assigned_to:
+      - "primary_safe"
+      - "operator-1"
+      - "operator-2"
+    threshold_for_add_remove: "owner (Safe)"
+    notes: "High-value 700M attestation should require Safe execution (not single EOA) where practical"
+
+# Emergency / rotation procedures (summary — full details in SAFE-PLAN.md)
+emergency:
+  lost_signer: "Remaining signers execute Safe tx to replace; then Safe calls remove* + add* on the contracts"
+  suspected_compromise: "Immediate Safe tx to remove the address from registrars/attestors; re-attest material positions if integrity questioned"
+  admin_transfer: "See deploy/SAFE-ADMIN-TRANSFER-CHECKLIST.md — always do this immediately after initial deployment"
+
+# Next actions after filling this manifest
+# 1. Create the Safe on Apostle (or reuse existing Troptions-controlled Safe if policy allows).
+# 2. Deploy the contracts with a temporary deployer EOA as initial owner.
+# 3. Execute the admin transfer checklist to move owner to this primary_safe.
+# 4. Use Safe to call addRegistrar / addAttestor for the operational signers listed above.
+# 5. Record the final Safe address + signer set in registry/addresses.md and the operator vault.
+# 6. Perform the first pledge document hash registration + 700M reserve attestation via the Safe where possible.
+
+# Versioning
+manifest_version: "2026-06-initial"
+last_updated: "2026-06-09"
+approved_by: "[] (add sign-off references after human review)"
