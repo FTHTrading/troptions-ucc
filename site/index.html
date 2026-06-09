@@ -178,6 +178,7 @@
                 <a href="#status" class="nav-link font-medium">Status &amp; DD</a>
                 <a href="#minting" class="nav-link font-medium">Minting &amp; Issuance</a>
                 <a href="#xrpl" class="nav-link font-medium">XRPL Lending</a>
+                <a href="#dryrun" class="nav-link font-medium">Dry-Run Pack</a>
                 <a href="#next" class="nav-link font-medium">What Else Is Needed</a>
                 <a href="#xrpl" class="nav-link font-medium">XRPL Lending</a>
             </div>
@@ -567,6 +568,39 @@ Evidence: &lt;Pages site or raw pledge PDF&gt;</pre>
 
         <div class="mt-6 text-xs text-amber-400/80">
             This is ready for legal, security, and operational review. XRPL flows remain subject to the core policy engine, UCC perfection, and the same evidence standards as the EVM rails. The site serves as the single review portal for the full topology (core + mirrors + XRPL).
+        </div>
+    </div>
+
+    <!-- Dry-Run Operations Pack -->
+    <div id="dryrun" class="max-w-screen-xl mx-auto px-6 py-16 border-b border-slate-800">
+        <h2 class="heading-font text-3xl tracking-tighter mb-2">Dry-Run Operations Pack</h2>
+        <p class="text-slate-400 max-w-2xl">Evidence-grade rehearsal material for deployment, verification, first attestations, and cross-chain consistency — before any live Apostle transaction. Use for legal/security signoff and operator training.</p>
+
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7">
+                <h3 class="font-semibold">Contents</h3>
+                <ul class="mt-4 space-y-2 text-sm text-slate-300">
+                    <li>• Sample deployment transcripts (Apostle + mirrors)</li>
+                    <li>• Example verified-contract metadata (explorer-style)</li>
+                    <li>• Example first-attestation payloads (JSON for 700M pledge)</li>
+                    <li>• Mock cross-chain consistency reports (table format)</li>
+                    <li>• Legal/security signoff checklist (pre-live Apostle)</li>
+                </ul>
+                <a href="https://raw.githubusercontent.com/FTHTrading/troptions-ucc/main/dry-run/DRY_RUN_OPERATIONS_PACK.md" download
+                   class="mt-6 inline-flex items-center gap-x-2 px-5 py-2.5 bg-white text-slate-950 font-semibold rounded-2xl hover:bg-slate-100 transition-all text-sm download-btn">
+                    <i class="fas fa-download mr-2"></i> Download Full Dry-Run Pack
+                </a>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-7">
+                <h3 class="font-semibold">How to Use</h3>
+                <p class="mt-2 text-sm text-slate-300">Run the existing deploy scripts + hasher + xrpl-adapter.js in a test environment. Replace placeholders with your dry-run outputs. Complete the signoff checklist with real reviewers. Only then proceed to live actions (Apostle first).</p>
+                <p class="mt-3 text-xs text-amber-400/80">All transcripts and reports in this pack are simulation templates. Generate your own rehearsal evidence before any real tx on chain 7332.</p>
+            </div>
+        </div>
+
+        <div class="mt-6 text-xs text-amber-400/80">
+            This pack provides the "evidence-grade rehearsal material" needed to de-risk execution while the review portal (site) and architecture (core first) are already complete. Use after legal/security review but before live Apostle deployment.
         </div>
     </div>
 

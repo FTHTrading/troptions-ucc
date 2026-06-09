@@ -29,6 +29,22 @@ This pack contains the minimal, production-oriented artifacts to deploy the two 
 - `xrpl/xrpl-adapter.js` — Executable reference implementation that turns an Apostle attestation into XRPL-ready memo/URI data (demonstrates the XRPL pack in code).
 - `site/wrangler.toml` — Cloudflare Pages config for the static review site (repo-native deployment).
 
+**Dry-Run Operations Pack (Evidence-Grade Rehearsal Material — Recommended Next Focus)**
+- `dry-run/DRY_RUN_OPERATIONS_PACK.md` — Consolidated guide + the four audiences (counsel, security, integrators, operators).
+- `dry-run/sample-deployment-transcripts.md` — Simulated Apostle/Polygon/Base logs from the `deploy-*.ps1` scripts.
+- `dry-run/example-verified-contract-metadata.md` — Polygonscan/Basescan/Apostle-style verification examples.
+- `dry-run/example-first-attestation-payloads.json` — Ready-to-use JSON for the 700M pledge document registrations + reserve attestation (Apostle first).
+- `dry-run/mock-cross-chain-consistency-reports.md` — Table templates (Apostle + mirrors + XRPL references) for the 700M pledge.
+- `dry-run/legal-security-signoff-checklist.md` — Execution-focused pre-live Apostle checklist (with sign-off block). Use this before any real tx on chain 7332.
+
+**Execution Order Reminder (from Topology)**
+1. Apostle/core first (this pack's core artifacts + dry-run rehearsal).
+2. Polygon + Base mirrors (scripts + cross-chain checklist).
+3. XRPL references (use the adapter + payloads after EVM mirrors are consistent).
+4. Public surfaces + policy wiring only after full legal/security sign-off on the reserve structure (UCC-1 filed, attestations live, evidence package in vault).
+
+**Review-First Note**: All packs and the site are "ready for legal and security review." The contracts are intentionally minimal and auditable; no production deployment or reliance until counsel sign-off on UCC perfection, control agreements, and the full reserve structure. The site (deployed to Cloudflare Pages with output dir `site`) is the single portal for all of the above. Use the dry-run pack to generate your own rehearsal transcripts and reports before live actions.
+
 **Execution Order Reminder (from Topology)**
 1. Apostle/core first (this pack's core artifacts).
 2. Polygon + Base mirrors (the scripts + cross-chain checklist in this pack).

@@ -1,0 +1,36 @@
+{
+  "comment": "Example first-attestation payloads for the 700M NST/Troptions pledge. Use after computing exact hashes from the canonical OneDrive PDFs via the backend hasher. Apostle first, then mirrors.",
+  "documentRegistration": {
+    "name": "NST-T-Pledge-Agreement-2025-12-30",
+    "version": 1,
+    "contentHash": "0x<exact-keccak-or-sha256-from-backend>",
+    "uri": "OneDrive: 11-Downloads/NST T pledge agreement 2025-12-30_150719.pdf + exhibits",
+    "signers": [
+      {"name": "Troptions Authorized Signatory", "role": "Secured Party"},
+      {"name": "Newpoint Statutory Trust Signatory", "role": "Pledgor"}
+    ],
+    "metadata": {
+      "declaredValue": "700000000.00",
+      "asset": "USD cash",
+      "custody": "Scotia Bank Canada"
+    }
+  },
+  "cisDocumentRegistration": {
+    "name": "NST-CIS-2025-12-28",
+    "version": 1,
+    "contentHash": "0x<exact-from-backend>",
+    "uri": "OneDrive: 11-Downloads/NST CIS 2025-12-28_225418.pdf"
+  },
+  "reserveAttestation": {
+    "pledgeId": "NST-T-2025-12-30-700M",
+    "collateralId": "schedule-a-usd-cash",
+    "asset": "USD",
+    "amount": "700000000.00",
+    "supportingDocHash": "0x<matching-pledge-doc-hash>",
+    "note": "Scotia Bank Canada custody per Schedule A; first-priority security interest per Master Asset Pledge Security Agreement; Troptions authorized to file UCC-1"
+  },
+  "expectedApostleEvents": {
+    "DocumentRegistered": "name=NST-T-Pledge-Agreement-2025-12-30, version=1, contentHash=0x..., registrant=0x..., timestamp=...",
+    "ReserveAttested": "pledgeId=NST-T-2025-12-30-700M, collateralId=schedule-a-usd-cash, asset=USD, amount=700000000.00, supportingDocHash=0x..., attestor=0x..., timestamp=..."
+  }
+}
