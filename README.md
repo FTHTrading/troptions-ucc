@@ -132,13 +132,35 @@ When new executed documents appear in `11-Downloads`, the workflow is:
 3. Authorized attestor calls `registerDocument` / `attestReserve`.
 4. Record tx hash + block in the relevant investigation or ops log.
 
-## Next Actions (after first commit)
+## The Review Site (Static DD Portal)
 
-- Add foundry.toml + basic test harness for the two registries.
-- Wire backend to a real object store (R2 / S3) or IPFS for packet artifacts (hashes stay on-chain).
-- Deploy first version to a testnet (or directly to a controlled L2/mainnet with the SAFE).
-- Register this system in `sovereign-control-plane/registry/systems.yaml` (human sign-off required).
-- Create `investigations/nst-700m-pledge/` artifacts once first on-chain registrations exist (forensic timeline, flow of collateral, risk register).
+A complete institutional review portal is in `site/`. It includes the 700M pledge facts, UCC-1 draft, smart contract downloads (with ABIs), all infrastructure packs (Apostle/core + Polygon/Base mirrors + XRPL integration), multisig docs, attestation runbook, verification guidance, dry-run operations pack (transcripts, payloads, mock reports, signoff checklist), and status.
+
+**Deploy to Cloudflare Pages (recommended):**
+1. `git push -u origin main` (latest commit 6deaad7 includes the dry-run pack and site updates).
+2. Cloudflare Pages → Create project → Connect the repo.
+3. Production branch: `main`.
+4. Build command: (empty).
+5. Build output directory: `site`.
+6. Deploy. Live URL e.g. https://troptions-ucc.pages.dev (set custom domain if desired).
+
+Once live:
+- Set the URL in the repo **About** → Website field.
+- Update links in this README and `QUICKSTART.md`.
+- Circulate as the official review portal for counsel and operators.
+
+GitHub Pages fallback: Settings → Pages → Source = `main` / `site`.
+
+See `site/DEPLOY_TO_PAGES.md` and `site/wrangler.toml`. All download links in the site point to specific raw files (e.g. the dry-run pack MD) so they work from GitHub or the deployed site.
+
+## Next Actions (after site is live)
+
+- Add the live Pages URL to the repo About (Website) and links in README / QUICKSTART.
+- Circulate the site to counsel, counterparties, and internal reviewers.
+- Complete legal review of the pledge/UCC facts.
+- Perform controlled dry-runs, replace simulated placeholders in `dry-run/` with real outputs.
+- Complete the `dry-run/legal-security-signoff-checklist.md` (with explicit approvals).
+- **Only then**: proceed to live Apostle deployment / first attestations (Apostle core first, per topology). No live tx on 7332 without the signed checklist.
 
 ## License & Control
 
@@ -147,3 +169,45 @@ Proprietary to FTH Trading / TROPTIONS operator. All contracts and tooling are o
 ---
 
 **This repo exists to make the NST pledge collateral verifiable, attestable, and governance-grade on-chain without moving the underlying legal instruments off their controlled storage.**
+
+## The Review Site (Static DD Portal)
+
+A complete institutional review portal is in `site/`. It includes the 700M pledge facts, UCC-1 draft, smart contract downloads (with ABIs), all infrastructure packs (Apostle/core + Polygon/Base mirrors + XRPL integration), multisig docs, attestation runbook, verification guidance, dry-run operations pack (transcripts, payloads, mock reports, signoff checklist), and status.
+
+**Is the site up?**  
+The site files are committed and pushed in the repo under `site/`. It is **not publicly live** until deployed.
+
+**Deploy to Cloudflare Pages (recommended, aligns with your stack):**
+1. Ensure latest is on remote (head 6deaad7): `git push -u origin main`.
+2. Cloudflare Dashboard → Pages → Create a project (or reuse/delete an old one to free slot; you currently have 10 projects).
+3. Connect the `troptions-ucc` GitHub repo.
+4. Production branch: `main`.
+5. Build command: (leave empty or `exit 0`).
+6. Build output directory: `site`.
+7. Deploy. Live URL e.g. https://troptions-ucc.pages.dev (or your custom domain).
+
+Once live:
+- Go to GitHub repo → Settings → General → About → paste the Description (see below) and set **Website** to the Pages URL.
+- Update links in this README and `QUICKSTART.md` to the live site.
+- Circulate the URL as the official review portal for counsel, counterparties, and internal reviewers.
+
+GitHub Pages fallback: Settings → Pages → Source = `main` / `site` folder.
+
+See `site/DEPLOY_TO_PAGES.md` and `site/wrangler.toml` for details. The site uses specific raw GitHub file links for downloads (e.g. the dry-run pack) so they work from the repo or deployed site.
+
+**GitHub About (copy-paste after deploy):**
+Description: UCC Collateral Governance & Reserve Attestation for the TROPTIONS / Newpoint Statutory Trust 700M USD pledge (Troptions secured party, NST pledgor DE #6985669, USD cash at Scotia Bank Canada). On-chain document hashes + reserve attestations (Apostle core + Polygon/Base mirrors + XRPL lending integration). Full review portal, contracts, infrastructure packs, and governance docs.
+
+Topics: troptions, ucc, collateral, pledge, solidity, xrpl, apostle, sovereign, governance, attestation, rwa, stablecoin-reserve, due-diligence
+
+Website: [the live Pages URL]
+
+## Next Actions (after site is live)
+
+- Add the live Pages URL to the repo About (Website) and links in README / QUICKSTART.
+- Circulate the site to counsel, counterparties, and internal reviewers as the official DD portal.
+- Complete legal review of the pledge/UCC facts.
+- Perform controlled dry-runs (using the scripts and hasher), replace simulated placeholders in `dry-run/` with real outputs.
+- Complete the `dry-run/legal-security-signoff-checklist.md` with explicit approvals and fresh preflight.
+- **Only then**: proceed to live Apostle deployment / first attestations (Apostle core first, per topology). No live tx on 7332 without the signed checklist.
+

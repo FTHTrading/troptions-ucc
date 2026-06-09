@@ -25,7 +25,9 @@ cd $HOME\dev\troptions-ucc
 powershell -ExecutionPolicy Bypass -File .\scripts\push.ps1 -Message "Initialize troptions-ucc collateral governance scaffold"
 ```
 
-After the first push your GitHub repo will contain the full structure (contracts for DocumentHashRegistry + TroptionsReserveRegistry, backend hasher/packet router, legal/compliance/multisig scaffolding, and the Windows helper pack itself).
+After the first push your GitHub repo will contain the full structure (contracts for DocumentHashRegistry + TroptionsReserveRegistry, backend hasher/packet router, legal/compliance/multisig scaffolding, Windows helper pack, ABI + verification pack, XRPL integration, and the dry-run operations pack).
+
+Deploy the static review site (in `site/`) to Cloudflare Pages (output directory `site`) for the live DD portal. See `site/DEPLOY_TO_PAGES.md`. Once live, set the URL in the repo About (Website) and update links here and in README.md.
 
 ## What the 700M pledge actually is (for context while you work)
 
@@ -72,3 +74,10 @@ Or point it at one of the real PDFs for a reproducible hash you can later regist
 ---
 
 Run the sequence above, push, and the repo is live with the correct Windows-native flow and the pledge facts wired into the documentation.
+
+## The Review Site
+
+Deploy the static review portal in `site/` to Cloudflare Pages (output directory `site`) after pushing. See `site/DEPLOY_TO_PAGES.md`. Once live, set the URL in the repo About and update links here.
+
+The site is the central place for all the content (pledge facts, contracts, packs, dry-run, etc.).
+
