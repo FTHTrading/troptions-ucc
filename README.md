@@ -177,23 +177,27 @@ A complete institutional review portal is in `site/`. It includes the 700M pledg
 **Is the site up?**  
 The site files are committed and pushed in the repo under `site/`. It is **not publicly live** until deployed.
 
-**Deploy to Cloudflare Pages (recommended, aligns with your stack):**
-1. Ensure latest is on remote (head 6deaad7): `git push -u origin main`.
-2. Cloudflare Dashboard → Pages → Create a project (or reuse/delete an old one to free slot; you currently have 10 projects).
-3. Connect the `troptions-ucc` GitHub repo.
+**Recommended deployment (Cloudflare Pages - aligns with stack):**
+1. Push latest: `git push -u origin main`.
+2. In Cloudflare Dashboard → Pages, create/reuse a project (free a slot via dashboard if hitting account limit; 10 projects seen previously).
+3. Connect the `FTHTrading/troptions-ucc` repo.
 4. Production branch: `main`.
-5. Build command: (leave empty or `exit 0`).
-6. Build output directory: `site`.
-7. Deploy. Live URL e.g. https://troptions-ucc.pages.dev (or your custom domain).
+5. Build command: empty.
+6. Output directory: `site`.
+7. Deploy. Live URL e.g. https://troptions-ucc.pages.dev (custom domain optional).
 
-Once live:
-- Go to GitHub repo → Settings → General → About → paste the Description (see below) and set **Website** to the Pages URL.
-- Update links in this README and `QUICKSTART.md` to the live site.
-- Circulate the URL as the official review portal for counsel, counterparties, and internal reviewers.
+**Reliable fallback: GitHub Pages via Actions (from `site/` subdir):**
+- The workflow `.github/workflows/deploy-site.yml` is included. It builds from the `site` directory and deploys to GitHub Pages.
+- In repo Settings → Pages, set source to "GitHub Actions".
+- Push to `main` to trigger (or manual dispatch).
+- Live URL: https://fthtrading.github.io/troptions-ucc/ (project page).
 
-GitHub Pages fallback: Settings → Pages → Source = `main` / `site` folder.
+Once live (CF or GH Pages):
+- Set the live URL in GitHub repo **About** → Website field.
+- Update links in README.md and QUICKSTART.md if desired.
+- Circulate as the official DD/review portal.
 
-See `site/DEPLOY_TO_PAGES.md` and `site/wrangler.toml` for details. The site uses specific raw GitHub file links for downloads (e.g. the dry-run pack) so they work from the repo or deployed site.
+See `site/DEPLOY_TO_PAGES.md`, `site/wrangler.toml`, and the workflow for details. All site download links use specific raw GitHub file paths (e.g. dry-run pack) so they work regardless of hosting.
 
 **GitHub About (copy-paste after deploy):**
 Description: UCC Collateral Governance & Reserve Attestation for the TROPTIONS / Newpoint Statutory Trust 700M USD pledge (Troptions secured party, NST pledgor DE #6985669, USD cash at Scotia Bank Canada). On-chain document hashes + reserve attestations (Apostle core + Polygon/Base mirrors + XRPL lending integration). Full review portal, contracts, infrastructure packs, and governance docs.

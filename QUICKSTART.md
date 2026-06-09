@@ -77,7 +77,11 @@ Run the sequence above, push, and the repo is live with the correct Windows-nati
 
 ## The Review Site
 
-Deploy the static review portal in `site/` to Cloudflare Pages (output directory `site`) after pushing. See `site/DEPLOY_TO_PAGES.md`. Once live, set the URL in the repo About and update links here.
+The static review portal lives in `site/` (full portal with all facts, contracts, packs including dry-run, XRPL, etc.).
 
-The site is the central place for all the content (pledge facts, contracts, packs, dry-run, etc.).
+**Deploy options (after `git push -u origin main`):**
+- Cloudflare Pages (recommended): Connect repo, `main` branch, output dir `site`. See `site/DEPLOY_TO_PAGES.md` and `site/wrangler.toml`.
+- GitHub Pages (fallback): Repo Settings → Pages → Source = GitHub Actions (the included `.github/workflows/deploy-site.yml` deploys from the `site/` subdir). Live at https://fthtrading.github.io/troptions-ucc/.
+
+Once live, set the URL in the repo About (Website) and update links here/README if needed. Circulate as the official DD portal. The site uses specific raw file links for all downloads.
 
