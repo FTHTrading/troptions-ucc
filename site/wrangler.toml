@@ -1,0 +1,19 @@
+name = "troptions-ucc-review-site"
+compatibility_date = "2024-01-01"
+
+[site]
+bucket = "./site"
+
+[build]
+command = ""  # Static site - no build step required. Output is the site/ folder itself.
+
+# For Cloudflare Pages deployment:
+# - Connect this repo in the Pages dashboard
+# - Production branch: main
+# - Build command: (leave empty or use "exit 0")
+# - Build output directory: site
+# 
+# Or deploy via CLI after wrangler login:
+# wrangler pages deploy site --project-name=troptions-ucc-review-site
+#
+# This deploys the full review portal (pledge facts, contract downloads, all packs, XRPL integration, governance docs).

@@ -23,11 +23,19 @@ This pack contains the minimal, production-oriented artifacts to deploy the two 
 - Environment examples already present in `deploy/environments/` (polygon.env.example, base.env.example).
 - Registry sections in `registry/addresses.md` for mirrors (placeholders until deployed).
 
+**ABI + Verification + Integration Pack (Bridges Review → Deployable Integrations)**
+- `abi/` — Accurate JSON ABIs for both contracts (DocumentHashRegistry and TroptionsReserveRegistry) for web3/ethers/cast/etc.
+- `verification/VERIFICATION_AND_INTEGRATION_PACK.md` — Full instructions/checklists for contract verification on explorers, sample cross-chain payloads (Apostle ↔ Polygon/Base ↔ XRPL), and guidance for using the attestations in off-chain systems or policy engines.
+- `xrpl/xrpl-adapter.js` — Executable reference implementation that turns an Apostle attestation into XRPL-ready memo/URI data (demonstrates the XRPL pack in code).
+- `site/wrangler.toml` — Cloudflare Pages config for the static review site (repo-native deployment).
+
 **Execution Order Reminder (from Topology)**
 1. Apostle/core first (this pack's core artifacts).
 2. Polygon + Base mirrors (the scripts + cross-chain checklist in this pack).
-3. XRPL loan adapters later.
+3. XRPL loan adapters / integration (use the verification pack + xrpl-adapter.js after EVM mirrors are consistent).
 4. Public surfaces only after legal/security sign-off on the full reserve structure.
+
+**Review-First Note**: All packs and the site are "ready for legal and security review." The contracts are intentionally minimal and auditable; no production deployment or reliance until counsel sign-off on UCC perfection, control agreements, and the reserve structure. The site (deployed to Cloudflare Pages with output dir `site`) is the single portal for all of the above.
 
 ## Critical Warnings (Sovereign Control Plane + AGENTS.md)
 
